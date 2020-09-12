@@ -395,7 +395,7 @@ class timesheetDAO {
 				if(!isset($_POST['print'])) {
 					if($msie) {
 						if($startTime > 0) {
-							list($startHour, $startMinute) = split(":", $startTime);
+							list($startHour, $startMinute) = explode(":", $startTime);
 						} else {
 							$startHour = 0;
 							$startMinute = 0;
@@ -412,7 +412,7 @@ class timesheetDAO {
 				if(!isset($_POST['print'])) {
 					if($msie) {
 						if($stopTime > 0) {
-							list($stopHour, $stopMinute) = split(":", $stopTime);
+							list($stopHour, $stopMinute) = explode(":", $stopTime);
 						} else {
 							$stopHour = 0;
 							$stopMinute = 0;
@@ -539,7 +539,7 @@ class timesheetDAO {
 			if(!isset($_POST['print'])) {
 				if($msie) {
 					if($startTime > 0) {
-						list($startHour, $startMinute) = split(":", $startTime);
+						list($startHour, $startMinute) = explode(":", $startTime);
 					} else {
 						$startHour = 0;
 						$startMinute = 0;
@@ -555,7 +555,7 @@ class timesheetDAO {
 			if(!isset($_POST['print'])) {
 				if($msie) {
 					if($stopTime > 0) {
-						list($stopHour, $stopMinute) = split(":", $stopTime);
+						list($stopHour, $stopMinute) = explode(":", $stopTime);
 					} else {
 						$stopHour = 0;
 						$stopMinute = 0;
@@ -841,13 +841,13 @@ class timesheetDAO {
 				
 				$_POST["timesheetDate"] = $rows['date'];
 				if($_POST["timesheetDate"] != '') {
-					$_POST["timesheetDate"] = date("m/d/Y", strtotime($_POST["timesheetDate"]));
+					$_POST["timesheetDate"] = date("Y-m-d", strtotime($_POST["timesheetDate"]));
 					$timesheetDate = $_POST["timesheetDate"];
 				}
 				
 				$_POST["handDigDate"] = $rows['hand_dig_date'];
 				if($_POST["handDigDate"] > 0) {
-					$_POST["handDigDate"] = date("m/d/Y", strtotime($_POST["handDigDate"]));
+					$_POST["handDigDate"] = date("Y-m-d", strtotime($_POST["handDigDate"]));
 				} 
 				
 				$_POST["handDigLF"] = $rows['hand_dig_size'];
@@ -863,27 +863,27 @@ class timesheetDAO {
 				
 				$_POST["footerDugDate"] = $rows['footer_dug_time'];
 				if($_POST["footerDugDate"] > 0) {
-					$_POST["footerDugDate"] = date("m/d/Y", strtotime($_POST["footerDugDate"]));
+					$_POST["footerDugDate"] = date("Y-m-d", strtotime($_POST["footerDugDate"]));
 				}
 				
 				$_POST["footerSetTime"] = $rows['footer_set_time'];
 				if($_POST["footerSetTime"] > 0) {
-					$_POST["footerSetTime"] = date("m/d/Y", strtotime($_POST["footerSetTime"]));
+					$_POST["footerSetTime"] = date("Y-m-d", strtotime($_POST["footerSetTime"]));
 				}
 				
 				$_POST["footerPouredTime"] = $rows['footer_poured_time'];
 				if($_POST["footerPouredTime"] > 0) {
-					$_POST["footerPouredTime"] = date("m/d/Y", strtotime($_POST["footerPouredTime"]));
+					$_POST["footerPouredTime"] = date("Y-m-d", strtotime($_POST["footerPouredTime"]));
 				}
 				
 				$_POST["blockTime"] = $rows['block_time'];
 				if($_POST["blockTime"] > 0) {
-					$_POST["blockTime"] = date("m/d/Y", strtotime($_POST["blockTime"]));
+					$_POST["blockTime"] = date("Y-m-d", strtotime($_POST["blockTime"]));
 				}
 				
 				$_POST["wallCompleteTime"] = $rows['wall_complete_time'];
 				if($_POST["wallCompleteTime"] > 0) {
-					$_POST["wallCompleteTime"] = date("m/d/Y", strtotime($_POST["wallCompleteTime"]));
+					$_POST["wallCompleteTime"] = date("Y-m-d", strtotime($_POST["wallCompleteTime"]));
 				}
 				
 				$wallCompleteTimeTS = strtotime($_POST["wallCompleteTime"]);
@@ -893,7 +893,7 @@ class timesheetDAO {
 				
 				$_POST["groutAndCapsTime"] = $rows['grout_and_caps_time'];
 				if($_POST["groutAndCapsTime"] > 0) {
-					$_POST["groutAndCapsTime"] = date("m/d/Y", strtotime($_POST["groutAndCapsTime"]));
+					$_POST["groutAndCapsTime"] = date("Y-m-d", strtotime($_POST["groutAndCapsTime"]));
 				}
 				
 				$groutAndCapsTimeTS = strtotime($_POST["groutAndCapsTime"]);
@@ -903,7 +903,7 @@ class timesheetDAO {
 				
 				$_POST["warrantyTime"] = $rows['warranty_time'];
 				if($_POST["warrantyTime"] > 0) {
-					$_POST["warrantyTime"] = date("m/d/Y", strtotime($_POST["warrantyTime"]));
+					$_POST["warrantyTime"] = date("Y-m-d", strtotime($_POST["warrantyTime"]));
 				}
 				
 				$warrantyTimeTS = strtotime($_POST["warrantyTime"]);
@@ -913,7 +913,7 @@ class timesheetDAO {
 				
 				$_POST["poTime"] = $rows['po_time'];
 				if($_POST["poTime"] > 0) {
-					$_POST["poTime"] = date("m/d/Y", strtotime($_POST["poTime"]));
+					$_POST["poTime"] = date("Y-m-d", strtotime($_POST["poTime"]));
 				}
 				
 				$poTimeTS = strtotime($_POST["poTime"]);
@@ -1389,11 +1389,11 @@ class timesheetDAO {
 		global $stopTime;
 		global $outputMessage;
 		
-		$workerTimesArr = split(";", $workerTimes);
+		$workerTimesArr = explode(";", $workerTimes);
 		$invalidWorkerTimes = false;
 		$invalidWorkerTimeName = '';
 		for ($i = 0; $i < sizeof($workerTimesArr) - 1; $i++) {
-			list($workerName, $startTime, $stopTime) = split(",", $workerTimesArr[$i]);
+			list($workerName, $startTime, $stopTime) = explode(",", $workerTimesArr[$i]);
 			if(!$this->saveWorkerTime()) {
 				$invalidWorkerTimes = true;
 				$invalidWorkerTimeName = $workerName;

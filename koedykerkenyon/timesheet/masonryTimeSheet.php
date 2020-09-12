@@ -16,7 +16,7 @@ include 'masonryTimeSheetUtils.php';
 if(isset($_GET['lot'])) {
 	$_GET['lot'] = str_replace('sAnd','&',$_GET['lot']);
 	$_GET['lot'] = str_replace(':',' ',$_GET['lot']);
-	$lotInfo = split(",", $_GET['lot']);
+	$lotInfo = explode(",", $_GET['lot']);
 	$index = sizeof($lotInfo);
 	if($index == 4) {
 		list($_POST['builder'], $_POST['subdivision'], $_POST['lot'], $_POST['action'])  = $lotInfo;

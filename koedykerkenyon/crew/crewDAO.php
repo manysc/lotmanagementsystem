@@ -228,7 +228,7 @@ class crewDAO {
 		global $workerName;
 		global $outputMessage;
 		
-		list($last, $first) = split(", ", $workerName);
+		list($last, $first) = explode(", ", $workerName);
 		
 		$sql = "select * from " . $databaseName . ".employees where `first`='" . $first . "' && `last`='" . $last . "'";
 		$records = mysqli_query($this->con, $sql);
@@ -254,7 +254,7 @@ class crewDAO {
 		global $employeeName;
 		global $outputMessage;
 		
-		list($last, $first) = split(", ", $employeeName);
+		list($last, $first) = explode(", ", $employeeName);
 		
 		$sql = "select * from " . $databaseName . ".employees where `first`='" . $first . "' && `last`='" . $last . "'";
 		$records = mysqli_query($this->con, $sql);

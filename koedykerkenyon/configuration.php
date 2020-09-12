@@ -4,8 +4,8 @@ $sitePath="";
 
 // Database configuration.
 $databaseHostname="127.0.0.1";
-$databaseId="manysc_koedyker";
-$databasePassword="koedykerkenyon1";
+$databaseId="root";
+$databasePassword="";
 $databaseName="manysc_koedykerkenyon";
 
 ?>
