@@ -36,9 +36,7 @@ body,td,th {
 	?>
 	<form name="index" id="index" action="index.php" method="post">
 		<div align="center" style="font-size:50px">
-			<label style="font-size:40px"><strong>Koedyker & Kenyon</strong></label>
-			<br/>
-			<label style="font-size:30px">Lot Management System</label>
+			<label style="font-size:40px"><strong>Masonry Management System</strong></label>
 		</div>
 		<textarea name="loginOutput" id="loginOutput" cols="75" rows="1" style="font-size:22px" readonly><?php echo $outputMessage; ?></textarea>
 		<fieldset id="loginFieldset">
