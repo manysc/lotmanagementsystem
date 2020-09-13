@@ -66,11 +66,11 @@ body,td,th {
 
 <body>
 	<form id="header" name="header" method="post" action="header.php">
-		<div align="center"><label style="font-size:40px"><strong>Koedyker & Kenyon</strong></label></div>
 		<div align="center"><fieldset id="leftHeader"></fieldset>
 		<fieldset id="centerHeader">
-			<label style="font-size:30px">Lot Management System</label>
-		</fieldset><fieldset id="rightHeader">
+			<div align="center"><label style="font-size:40px"><strong>Masonry Management System</strong></label></div>
+		</fieldset>
+		<fieldset id="rightHeader">
 			<a style="font-size:25px" href=<?php echo $sitePath . "/index.php"; ?> >Logout</a>
 		</fieldset></div>
 	</form>
