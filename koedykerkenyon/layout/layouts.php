@@ -258,6 +258,8 @@ function showPlanImage() {
 
     var obj=document.getElementById('planImage');
     obj.className = 'showImage';
+
+    document.getElementsByName("fileUploadOutput")[0].value = '';
 }
 
 function hidePlanImage() {
