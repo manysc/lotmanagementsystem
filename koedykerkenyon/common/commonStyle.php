@@ -20,6 +20,10 @@
 	width: 370px;
 	font-size: 23px;
 }
+.formMediumLargeInput {
+	width: 320px;
+	font-size: 23px;
+}
 .formMediumInput {
 	width: 277px;
 	font-size: 23px;
@@ -60,6 +64,12 @@
 	width: 90px;
 	left: 125;
 	top: 125;
+}
+.hideImage {
+    display:none;
+}
+.showImage {
+    display:block;
 }
 </style>
 

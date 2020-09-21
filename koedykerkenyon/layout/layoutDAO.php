@@ -32,12 +32,13 @@ class layoutDAO {
 		if(!strcmp($outputMessage, "  ")) {
 			$outputMessage= "No layout found!";
 		} else {
-			$outputMessage = "Layout has been found. ";
+			$outputMessage = "Layout has been found.";
 			$_POST["date"] = $rows['date'];
 			$_POST["supervisor"] = $rows['supervisor'];
 			$_POST["courses"] = $rows['courses'];
 			$_POST["gate"] = $rows['gate'];
 			$_POST["endLot"] = $rows['endLot'];
+			$_POST["planImageFile"] = $rows['plan_image_filename'];
 			$_POST["comments"] = $rows['comments'];
 			$_POST["retainerBW"] = $rows['retainerBW'];
 			$_POST["rbwCourses"] = $rows['rbw_courses'];
@@ -246,7 +247,7 @@ class layoutDAO {
 			if(mysqli_query($this->con, $sql)) {
 				$outputMessage='Updated layout successfully.';
 			} else {
-				$outputMessage='Unable to udpdate layout: ' . mysqli_error($this->con);
+				$outputMessage='Unable to update layout: ' . mysqli_error($this->con);
 			}
 		}
 	}
@@ -271,6 +272,46 @@ class layoutDAO {
 			$outputMessage="Layout is not found!";
 		}
 	}
+
+	// Save Layout Plan image filename
+    function updatePlanImageFilename() {
+        global $databaseName;
+        global $builder;
+        global $subdivision;
+        global $lot;
+        global $planImageFile;
+        global $outputMessage;
+
+        $sql = "update $databaseName.layouts set plan_image_filename='$planImageFile' where builder='$builder' && subdivision='$subdivision' && lot='$lot'";
+
+        if(mysqli_query($this->con, $sql)) {
+            $outputMessage='Update Layout Image filename successfully.';
+        } else {
+            $outputMessage='Unable to update Layout Image filename: ' . mysqli_error($this->con);
+        }
+
+        return true;
+    }
+
+    // Delete Layout Plan image filename
+    function deletePlanImageFilename() {
+        global $databaseName;
+        global $builder;
+        global $subdivision;
+        global $lot;
+        global $planImageFile;
+        global $outputMessage;
+
+        $sql = "update $databaseName.layouts set plan_image_filename=NULL where builder='$builder' && subdivision='$subdivision' && lot='$lot'";
+
+        if(mysqli_query($this->con, $sql)) {
+            $outputMessage='Deleted Layout Image filename successfully.';
+        } else {
+            $outputMessage='Unable to delete Layout Image filename: ' . mysqli_error($this->con);
+        }
+
+        return true;
+    }
 	
 	function saveSelectedTimesheet() {
 		global $databaseName;

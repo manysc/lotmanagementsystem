@@ -2,6 +2,7 @@
 
 include '../employee/employee.php';
 include 'layoutDAO.php';
+include '../common/fileUtils.php';
 
 $outputMessage='';
 $builder='';
@@ -14,6 +15,7 @@ $selectedTimesheetDate='';
 $selectedTimesheetAction='';
 $selectedTimesheetCrew='';
 $endLot='';
+$planImageFile='';
 $comments='';
 $retainerBW=0;
 $rbwCourses=0;
@@ -106,6 +108,10 @@ else if(isset($_POST['saveSelectedTimesheet'])) {
 	deleteLayout();
 } else if(isset($_POST['clearLayout'])) {
 	clearLayout();
+} else if(isset($_POST['deletePlanImage'])) {
+	deletePlanImage();
+} else if(isset($_POST['updatePlanImage'])) {
+    updatePlanImage();
 }
 
 function displayExistingTimesheets() {
@@ -128,6 +134,12 @@ function validateBuilder() {
 	if (!empty($_POST)) {
 		global $builder;
 		global $outputMessage;
+
+		if(!isset($_POST["builder"])) {
+		    $outputMessage='Please enter Builder.';
+            return FALSE;
+		}
+
 		$builder=$_POST["builder"];
 		
 		if(empty($builder)) {
@@ -574,6 +586,7 @@ function clearLayout() {
 	$_POST["courses"] = "";
 	$_POST["gate"] = "";
 	$_POST["endLot"] = "";
+	$_POST["planImageFile"] = "";
 	$_POST["comments"] = "";
 	$_POST["retainerBW"] = "";
 	$_POST["rbwCourses"] = "";
@@ -614,6 +627,53 @@ function clearLayout() {
 	$outputMessage="";
 	global $formCleared;
 	$formCleared = true;
+}
+
+function deletePlanImage() {
+    global $layout_plan_images_dir;
+    global $planImageFile;
+    global $uploadFileMessage;
+
+    if(isset($_POST['planImageFile']) && !empty($_POST['planImageFile'])) {
+        if(validateBuilder() && validateSubdivision() && validateLot()) {
+            // Update DB
+            $layoutDAO = new layoutDAO();
+            $layoutDAO->connect();
+            $layoutDAO->deletePlanImageFilename();
+            $layoutDAO->disconnect();
+
+            $planImageFile = $_POST['planImageFile'];
+
+            // Delete file from file system
+            deleteImage($layout_plan_images_dir, $planImageFile);
+
+            // Update UI
+            $_POST["planImageFile"] = "";
+        } else {
+            $uploadFileMessage = 'Layout Builder, Subdivision and/or Lot not set yet';
+        }
+
+    } else {
+        $uploadFileMessage = 'Layout plan image is not set yet, unable to delete.';
+    }
+}
+
+function updatePlanImage() {
+    global $layout_plan_images_dir;
+    global $planImageFile;
+
+    if(validateBuilder() && validateSubdivision() && validateLot()) {
+  	    if(uploadImage($layout_plan_images_dir, $planImageFile)) {
+  	        // Update UI
+  	        $_POST['planImageFile'] = $planImageFile;
+
+  	        // Save image filename to database
+            $layoutDAO = new layoutDAO();
+            $layoutDAO->connect();
+            $layoutDAO->updatePlanImageFilename();
+            $layoutDAO->disconnect();
+  	    }
+  	}
 }
 
 ?>
