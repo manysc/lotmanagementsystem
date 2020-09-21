@@ -54,25 +54,6 @@ if(isset($_GET['lot'])) {
   </div>
   </fieldset>
   <br/>
-
-  <fieldset id="Layout Plan">
-    <legend class="sectionLegend">Layout Plan</legend>
-    <textarea class="formOutput" name="fileUploadOutput" id="fileUploadOutput" cols="74" rows="1" readonly><?php echo $uploadFileMessage; ?></textarea><br/><br/>
-
-    <img class="hideImage" id="planImage" src="<?php echo $layout_plan_images_dir . $_POST['planImageFile']; ?>" style="margin-left:auto;margin-right:auto;width:50%;border:5px solid black">
-
-    <label class="formHeaderLabel">Plan Image:</label>
-      <input class="formLargeInput" name="planImageFile" type="text" value="<?php if(isset($_POST['planImageFile'])) { echo $_POST['planImageFile']; } ?>"/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    <input class="formButton" type="button" name="viewPlanImage" value= "View" onclick="showPlanImage()">
-    <input class="formButton" type="button" name="hidePlanImageButton" value= "Hide" onclick="hidePlanImage()">
-    <input class="formButton" type="submit" name="deletePlanImage" id="deletePlanImage" value="Delete" onclick="return confirm('Are you sure you want to Delete this Plan Image?')"><br/><br/>
-    <label class="formHeaderLabel">Select image to upload:</label>
-        <input class="formMediumLargeInput" type="file" name="fileToUpload" id="fileToUpload">
-        <input class="formMediumSmallInput" type="submit" name="updatePlanImage" id="updatePlanImage" value="Update Image">
-  </fieldset>
-  <br/>
   
   <fieldset id="retainers">
   <legend class="sectionLegend">Retainers</legend><br/>
@@ -219,6 +200,25 @@ if(isset($_GET['lot'])) {
   	</tr>
 	</table>
 	<input type="hidden" name="selectedTimesheetCrew" size="20" style="font-size:20px" value=''>
+  </fieldset>
+  <br/>
+
+  <fieldset id="Layout Plan">
+    <legend class="sectionLegend">Layout Plan</legend>
+    <textarea class="formOutput" name="fileUploadOutput" id="fileUploadOutput" cols="74" rows="1" readonly><?php echo $uploadFileMessage; ?></textarea><br/><br/>
+
+    <img class="hideImage" id="planImage" src="<?php echo $layout_plan_images_dir . $_POST['planImageFile']; ?>" style="margin-left:auto;margin-right:auto;width:45%;border:5px solid black">
+
+    <label class="formHeaderLabel">Plan Image:</label>
+    <input class="formLargeInput" name="planImageFile" type="text" value="<?php if(isset($_POST['planImageFile'])) { echo $_POST['planImageFile']; } ?>"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <input class="formButton" type="button" name="viewPlanImage" value= "View" onclick="showPlanImage()">
+    <input class="formButton" type="button" name="hidePlanImageButton" value= "Hide" onclick="hidePlanImage()">
+    <input class="formButton" type="submit" name="deletePlanImage" id="deletePlanImage" value="Delete" onclick="return confirm('Are you sure you want to Delete this Plan Image?')"><br/><br/>
+    <label class="formHeaderLabel">Select image to upload:</label>
+      <input class="formMediumLargeInput" type="file" name="fileToUpload" id="fileToUpload">
+      <input class="formMediumSmallInput" type="submit" name="updatePlanImage" id="updatePlanImage" value="Update Image">
   </fieldset>
   <br/>
 
