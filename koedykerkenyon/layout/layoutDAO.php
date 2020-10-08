@@ -210,6 +210,19 @@ class layoutDAO {
 		global $warrantyCrewName;
 		global $pOCrewName;
 		global $outputMessage;
+
+		// FIXME For some reason retainer courses are empty.
+		if(!strcmp($rbwCourses, "")) {
+		    $rbwCourses = 0;
+		}
+
+		if(!strcmp($rlwCourses, "")) {
+            $rlwCourses = 0;
+        }
+
+        if(!strcmp($rrwCourses, "")) {
+            $rrwCourses = 0;
+        }
 		
 		$sql = "select * from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
 			   $subdivision . "' && `lot`='" . $lot . "'";
@@ -234,7 +247,7 @@ class layoutDAO {
             if(mysqli_query($this->con, $sql)) {
                 $outputMessage='Saved layout successfully.';
             } else {
-                $outputMessage='Unable save layout: ' . mysqli_error($this->con);
+                $outputMessage='Unable to save layout: ' . mysqli_error($this->con);
             }
         } else {
 			$sql = "update " . $databaseName . ".layouts set `date`='" . $date . "', `supervisor`='" . $supervisor . "', `courses`='"
