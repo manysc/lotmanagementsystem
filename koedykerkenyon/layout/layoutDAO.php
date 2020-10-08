@@ -27,53 +27,57 @@ class layoutDAO {
 		$sql = "select * from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
 		       $subdivision . "' && `lot`='" . $lot . "'";
 		$records = mysqli_query($this->con, $sql);
-		$rows = mysqli_fetch_array($records);
-		$outputMessage=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-		if(!strcmp($outputMessage, "  ")) {
-			$outputMessage= "No layout found!";
-		} else {
-			$outputMessage = "Layout has been found.";
-			$_POST["date"] = $rows['date'];
-			$_POST["supervisor"] = $rows['supervisor'];
-			$_POST["courses"] = $rows['courses'];
-			$_POST["gate"] = $rows['gate'];
-			$_POST["endLot"] = $rows['endLot'];
-			$_POST["planImageFile"] = $rows['plan_image_filename'];
-			$_POST["comments"] = $rows['comments'];
-			$_POST["retainerBW"] = $rows['retainerBW'];
-			$_POST["rbwCourses"] = $rows['rbw_courses'];
-			$_POST["retainerLW"] = $rows['retainerLW'];
-			$_POST["rlwCourses"] = $rows['rlw_courses'];
-			$_POST["retainerRW"] = $rows['retainerRW'];
-			$_POST["rrwCourses"] = $rows['rrw_courses'];
-			$_POST["perimeterBW"] = $rows['perimeterBW'];
-			$_POST["perimeterLW"] = $rows['perimeterLW'];
-			$_POST["perimeterRW"] = $rows['perimeterRW'];
-			$_POST["viewBW"] = $rows['viewBW'];
-			$_POST["viewLW"] = $rows['viewLW'];
-			$_POST["viewRW"] = $rows['viewRW'];
-			$_POST["lotBW"] = $rows['lotBW'];
-			$_POST["lotLW"] = $rows['lotLW'];
-			$_POST["lotRW"] = $rows['lotRW'];
-			$_POST["returnLR"] = $rows['returnLR'];
-			$_POST["returnRR"] = $rows['returnRR'];
-			$_POST["extraPT"] = $rows['extraPT'];
-			$_POST["extraAC"] = $rows['extraAC'];
-			$_POST["extraCY"] = $rows['extraCY'];
-			$_POST["extraBW"] = $rows['extraBW'];
-			$_POST["extraLW"] = $rows['extraLW'];
-			$_POST["extraRW"] = $rows['extraRW'];
-			$grandTotals = $rows['grandTotals'];
-			
-			$_POST["handPour"] = !strcmp($rows['hand_pour'], 1) ? $rows['hand_pour'] : "";
-			$_POST["upHillSide"] = !strcmp($rows['up_hill_side'], 1) ? $rows['up_hill_side'] : "";
-			$_POST["caps"] = !strcmp($rows['caps'], 1) ? $rows['caps'] : "";
-			$_POST["wheelBarrow"] = !strcmp($rows['wheel_barrow'], 1) ? $rows['wheel_barrow'] : "";
-			$_POST["mailbox"] = !strcmp($rows['mailbox'], 1) ? $rows['mailbox'] : "";
-			$_POST["rockVeneer"] = !strcmp($rows['rock_veneer'], 1) ? $rows['rock_veneer'] : "";
-			$_POST["repair"] = !strcmp($rows['repair'], 1) ? $rows['repair'] : "";
-			$_POST["groutRetainer"] = !strcmp($rows['grout_retainer'], 1) ? $rows['grout_retainer'] : "";
+
+		/* determine number of rows result set */
+		$row_cnt = mysqli_num_rows($records);
+		if($row_cnt == 0) {
+		    $outputMessage= "Layout is not found!";
+		    return;
 		}
+
+		$rows = mysqli_fetch_array($records);
+
+		$outputMessage = "Layout has been found.";
+        $_POST["date"] = $rows['date'];
+        $_POST["supervisor"] = $rows['supervisor'];
+        $_POST["courses"] = $rows['courses'];
+        $_POST["gate"] = $rows['gate'];
+        $_POST["endLot"] = $rows['endLot'];
+        $_POST["planImageFile"] = $rows['plan_image_filename'];
+        $_POST["comments"] = $rows['comments'];
+        $_POST["retainerBW"] = $rows['retainerBW'];
+        $_POST["rbwCourses"] = $rows['rbw_courses'];
+        $_POST["retainerLW"] = $rows['retainerLW'];
+        $_POST["rlwCourses"] = $rows['rlw_courses'];
+        $_POST["retainerRW"] = $rows['retainerRW'];
+        $_POST["rrwCourses"] = $rows['rrw_courses'];
+        $_POST["perimeterBW"] = $rows['perimeterBW'];
+        $_POST["perimeterLW"] = $rows['perimeterLW'];
+        $_POST["perimeterRW"] = $rows['perimeterRW'];
+        $_POST["viewBW"] = $rows['viewBW'];
+        $_POST["viewLW"] = $rows['viewLW'];
+        $_POST["viewRW"] = $rows['viewRW'];
+        $_POST["lotBW"] = $rows['lotBW'];
+        $_POST["lotLW"] = $rows['lotLW'];
+        $_POST["lotRW"] = $rows['lotRW'];
+        $_POST["returnLR"] = $rows['returnLR'];
+        $_POST["returnRR"] = $rows['returnRR'];
+        $_POST["extraPT"] = $rows['extraPT'];
+        $_POST["extraAC"] = $rows['extraAC'];
+        $_POST["extraCY"] = $rows['extraCY'];
+        $_POST["extraBW"] = $rows['extraBW'];
+        $_POST["extraLW"] = $rows['extraLW'];
+        $_POST["extraRW"] = $rows['extraRW'];
+        $grandTotals = $rows['grandTotals'];
+
+        $_POST["handPour"] = !strcmp($rows['hand_pour'], 1) ? $rows['hand_pour'] : "";
+        $_POST["upHillSide"] = !strcmp($rows['up_hill_side'], 1) ? $rows['up_hill_side'] : "";
+        $_POST["caps"] = !strcmp($rows['caps'], 1) ? $rows['caps'] : "";
+        $_POST["wheelBarrow"] = !strcmp($rows['wheel_barrow'], 1) ? $rows['wheel_barrow'] : "";
+        $_POST["mailbox"] = !strcmp($rows['mailbox'], 1) ? $rows['mailbox'] : "";
+        $_POST["rockVeneer"] = !strcmp($rows['rock_veneer'], 1) ? $rows['rock_veneer'] : "";
+        $_POST["repair"] = !strcmp($rows['repair'], 1) ? $rows['repair'] : "";
+        $_POST["groutRetainer"] = !strcmp($rows['grout_retainer'], 1) ? $rows['grout_retainer'] : "";
 	}
 	
 	function displayExistingTimesheets() {
@@ -210,27 +214,29 @@ class layoutDAO {
 		$sql = "select * from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
 			   $subdivision . "' && `lot`='" . $lot . "'";
 		$records = mysqli_query($this->con, $sql);
-		$rows = mysqli_fetch_array($records);
-		$outputMessage=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-		if(!strcmp($outputMessage, "  ")) {
-			$sql = "INSERT INTO " . $databaseName . ".layouts (`builder`, `subdivision`, `date`, `supervisor`, `courses`,
-			       `lot`, `gate`, `endLot`, `comments`, `retainerBW`, `rbw_courses`, `retainerLW`, `rlw_courses`, `retainerRW`,
-			       `rrw_courses`, `perimeterBW`, `perimeterLW`, `perimeterRW`, `viewBW`, `viewLW`, `viewRW`, `lotBW`,
-			       `lotLW`, `lotRW`, `returnLR`, `returnRR`, `extraPT`, `extraAC`, `extraCY`, `extraBW`, `extraLW`,
-			       `extraRW`, `grandTotals`, `hand_pour`, `up_hill_side`, `caps`, `wheel_barrow`, `mailbox`,
-			       `rock_veneer`, `repair`, `grout_retainer`)
-			       VALUES ('$builder', '$subdivision', '$date', '$supervisor', '$courses', '$lot', '$gate', '$endLot',
-			       '$comments', '$retainerBW', '$rbwCourses', '$retainerLW', '$rlwCourses', '$retainerRW', '$rrwCourses',
-			       '$perimeterBW', '$perimeterLW', '$perimeterRW', '$viewBW', '$viewLW', '$viewRW', '$lotBW', '$lotLW',
-			       '$lotRW', '$returnLR', '$returnRR', '$extraPT', '$extraAC', '$extraCY', '$extraBW', '$extraLW', '$extraRW',
-			       '$grandTotals', '$handPour', '$upHillSide', '$caps', '$wheelBarrow', '$mailbox', '$rockVeneer',
-			       '$repair', '$groutRetainer')";
-			if(mysqli_query($this->con, $sql)) {
-				$outputMessage='Saved layout successfully.';
-			} else {
-				$outputMessage='Unable save layout: ' . mysqli_error($this->con);
-			}
-		} else {
+
+		/* determine number of rows result set */
+        $row_cnt = mysqli_num_rows($records);
+
+        if($row_cnt == 0) {
+            $sql = "INSERT INTO " . $databaseName . ".layouts (`builder`, `subdivision`, `date`, `supervisor`, `courses`,
+            			       `lot`, `gate`, `endLot`, `comments`, `retainerBW`, `rbw_courses`, `retainerLW`, `rlw_courses`, `retainerRW`,
+            			       `rrw_courses`, `perimeterBW`, `perimeterLW`, `perimeterRW`, `viewBW`, `viewLW`, `viewRW`, `lotBW`,
+            			       `lotLW`, `lotRW`, `returnLR`, `returnRR`, `extraPT`, `extraAC`, `extraCY`, `extraBW`, `extraLW`,
+            			       `extraRW`, `grandTotals`, `hand_pour`, `up_hill_side`, `caps`, `wheel_barrow`, `mailbox`,
+            			       `rock_veneer`, `repair`, `grout_retainer`)
+            			       VALUES ('$builder', '$subdivision', '$date', '$supervisor', '$courses', '$lot', '$gate', '$endLot',
+            			       '$comments', '$retainerBW', '$rbwCourses', '$retainerLW', '$rlwCourses', '$retainerRW', '$rrwCourses',
+            			       '$perimeterBW', '$perimeterLW', '$perimeterRW', '$viewBW', '$viewLW', '$viewRW', '$lotBW', '$lotLW',
+            			       '$lotRW', '$returnLR', '$returnRR', '$extraPT', '$extraAC', '$extraCY', '$extraBW', '$extraLW', '$extraRW',
+            			       '$grandTotals', '$handPour', '$upHillSide', '$caps', '$wheelBarrow', '$mailbox', '$rockVeneer',
+            			       '$repair', '$groutRetainer')";
+            if(mysqli_query($this->con, $sql)) {
+                $outputMessage='Saved layout successfully.';
+            } else {
+                $outputMessage='Unable save layout: ' . mysqli_error($this->con);
+            }
+        } else {
 			$sql = "update " . $databaseName . ".layouts set `date`='" . $date . "', `supervisor`='" . $supervisor . "', `courses`='"
 				   . $courses . "', `gate`='" . $gate . "', `endLot`='" . $endLot . "', `comments`='" . $comments . "', `retainerBW`='"
 				   . $retainerBW . "', `rbw_courses`='" . $rbwCourses . "', `retainerLW`='" . $retainerLW . "', `rlw_courses`='"
@@ -261,16 +267,20 @@ class layoutDAO {
 		$sql = "select * from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
 			   $subdivision . "' && `lot`='" . $lot . "'";
 		$records = mysqli_query($this->con, $sql);
+
+		/* determine number of rows result set */
+        $row_cnt = mysqli_num_rows($records);
+        if($row_cnt == 0) {
+            $outputMessage= "Layout is not found!";
+            return;
+        }
+
 		$rows = mysqli_fetch_array($records);
-		$outputMessage=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-		if(strcmp($outputMessage, "  ")) {
-			$sql = "delete from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
-			       $subdivision . "' && `lot`='" . $lot . "'";
-			mysqli_query($this->con, $sql);
-			$outputMessage = 'Deleted ' . $builder . " " . $subdivision . " " . $lot;
-		} else {
-			$outputMessage="Layout is not found!";
-		}
+
+		$sql = "delete from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
+        			       $subdivision . "' && `lot`='" . $lot . "'";
+        			mysqli_query($this->con, $sql);
+        			$outputMessage = 'Deleted ' . $builder . " " . $subdivision . " " . $lot;
 	}
 
 	// Save Layout Plan image filename
@@ -332,48 +342,50 @@ class layoutDAO {
 		       . $builder . "' && `subdivision`='" . $subdivision . "' && `lot`='" . $lot . "' && `action`='" . $selectedTimesheetAction
 		       . "' && `crew_name`='" . $selectedTimesheetCrew . "'";
 		$records = mysqli_query($this->con, $sql);
-		$rows = mysqli_fetch_array($records);
-		$outputMessage=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-		if(!strcmp($outputMessage, "  ")) {
-			// Note that there might be existing timesheets with no Crew defined yet.
-			// Note that existing timesheets with no Crew will not exist once the System is stable
-			// as the previous design allowed creating timesheets with no Crew.
-			$timesheetNoCrewQuery = "select * from " . $databaseName . ".masonrytimesheets where `date`='" . $timesheetDate . "' && `builder`='"
-		       . $builder . "' && `subdivision`='" . $subdivision . "' && `lot`='" . $lot . "' && `action`='" . $selectedTimesheetAction
-		       . "' && `crew_name`=''";
-	        $timesheetNoCrewRecords = mysqli_query($this->con, $timesheetNoCrewQuery);
-			$timesheetNoCrewRows = mysqli_fetch_array($timesheetNoCrewRecords);
-			$timesheetNoCrewData = $timesheetNoCrewRows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-			$saved = false;
-			if(!strcmp($timesheetNoCrewData, "  ")) {
-				$sql = "INSERT INTO " . $databaseName . ".masonrytimesheets (`date`, `builder`, `subdivision`, `lot`, `action`, `crew_name`) VALUES ('$timesheetDate', '$builder',
-				        '$subdivision', '$lot', '$selectedTimesheetAction', '$selectedTimesheetCrew')";
-				if(mysqli_query($this->con, $sql)) {
-					// Save Workers to keep existing Crew.
-					if($this->saveWorkers()) {
-						$outputMessage = 'Saved Timesheet successfully.';
-						$saved = true;
-					} else {
-						
-					}
-				} else {
-					$outputMessage='Unable create Timesheet: ' . mysqli_error($this->con);
-				}
-			} else {
-				$updateTimesheetQuery = "update " . $databaseName . ".masonrytimesheets set `crew_name`='" . $selectedTimesheetCrew . "' where `date`='" .
-			 						$timesheetDate . "' && `builder`='" . $builder . "' && `subdivision`='" . $subdivision .
-			 						"' && `lot`='" . $lot . "' && `action`='" . $selectedTimesheetAction . "' && `crew_name`=''";
-				if(mysqli_query($this->con, $updateTimesheetQuery)) {
-					$outputMessage = 'Updated Timesheet successfully.';
-					$saved = true;
-				} else {
-					$outputMessage='Unable update Timesheet: ' . mysqli_error($this->con);
-				}
-			}
-			if($saved) {
-				clearSelectedTimesheet();
-			}
-		} else {
+
+		/* determine number of rows result set */
+        $row_cnt = mysqli_num_rows($records);
+        if($row_cnt == 0) {
+            // Note that there might be existing timesheets with no Crew defined yet.
+            // Note that existing timesheets with no Crew will not exist once the System is stable
+            // as the previous design allowed creating timesheets with no Crew.
+            $timesheetNoCrewQuery = "select * from " . $databaseName . ".masonrytimesheets where `date`='" . $timesheetDate . "' && `builder`='"
+               . $builder . "' && `subdivision`='" . $subdivision . "' && `lot`='" . $lot . "' && `action`='" . $selectedTimesheetAction
+               . "' && `crew_name`=''";
+            $timesheetNoCrewRecords = mysqli_query($this->con, $timesheetNoCrewQuery);
+
+            $saved = false;
+
+            $row_cnt = mysqli_num_rows($timesheetNoCrewRecords);
+            if($row_cnt == 0) {
+                $sql = "INSERT INTO " . $databaseName . ".masonrytimesheets (`date`, `builder`, `subdivision`, `lot`, `action`, `crew_name`) VALUES ('$timesheetDate', '$builder',
+                        '$subdivision', '$lot', '$selectedTimesheetAction', '$selectedTimesheetCrew')";
+                if(mysqli_query($this->con, $sql)) {
+                    // Save Workers to keep existing Crew.
+                    if($this->saveWorkers()) {
+                        $outputMessage = 'Saved Timesheet successfully.';
+                        $saved = true;
+                    } else {
+
+                    }
+                } else {
+                    $outputMessage='Unable create Timesheet: ' . mysqli_error($this->con);
+                }
+            } else {
+                $updateTimesheetQuery = "update " . $databaseName . ".masonrytimesheets set `crew_name`='" . $selectedTimesheetCrew . "' where `date`='" .
+                                    $timesheetDate . "' && `builder`='" . $builder . "' && `subdivision`='" . $subdivision .
+                                    "' && `lot`='" . $lot . "' && `action`='" . $selectedTimesheetAction . "' && `crew_name`=''";
+                if(mysqli_query($this->con, $updateTimesheetQuery)) {
+                    $outputMessage = 'Updated Timesheet successfully.';
+                    $saved = true;
+                } else {
+                    $outputMessage='Unable update Timesheet: ' . mysqli_error($this->con);
+                }
+            }
+            if($saved) {
+                clearSelectedTimesheet();
+            }
+        } else {
 			$outputMessage = 'Timesheet already saved.';
 		}
 	}
@@ -398,9 +410,12 @@ class layoutDAO {
 		       . "' && `crew_name`='" . $selectedTimesheetCrew . "'";
 		       
 		$records = mysqli_query($this->con, $sql);
-		$rows = mysqli_fetch_array($records);
-		$outputMessage=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-		if(strcmp($outputMessage, "  ")) {
+
+		// determine number of rows result set
+        $row_cnt = mysqli_num_rows($records);
+        if($row_cnt == 0) {
+            $outputMessage = 'Timesheet does not exist.';
+        } else {
 			$sql = "delete from " . $databaseName . ".masonrytimesheets where `date`='" . $timesheetDate . "' && `builder`='" . $builder
 			       . "' && `subdivision`='" . $subdivision . "' && `lot`='" . $lot . "' && `action`='" . $selectedTimesheetAction
 			       . "' && `crew_name`='" . $selectedTimesheetCrew . "'";
@@ -417,37 +432,40 @@ class layoutDAO {
 				$sql = "select * from " . $databaseName . ".masonrytimesheets where `builder`='" . $builder . "' && `subdivision`='" .
 				 	   $subdivision . "' && `lot`='" . $lot . "'";
 				$records = mysqli_query($this->con, $sql);
-				$rows = mysqli_fetch_array($records);
-				$selectedTimesheet=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
+
 				// Delete lot status only if there are no timesheets associated.
-				$lotStatusDeleted = false;
-				if(!strcmp($selectedTimesheet, "  ")) {
+                $lotStatusDeleted = false;
+
+				// determine number of rows result set
+                $row_cnt = mysqli_num_rows($records);
+                if($row_cnt == 0) {
 					$sql = "select * from " . $databaseName . ".lotstatuses where `builder`='" . $builder . "' && `subdivision`='" .
 				 	   $subdivision . "' && `lot`='" . $lot . "'";
 			 	   	$records = mysqli_query($this->con, $sql);
-			 	   	$rows = mysqli_fetch_array($records);
-					$selectedLotStatus=$rows['builder'] . ' ' . $rows['subdivision'] . ' ' . $rows['lot'];
-					if(strcmp($selectedLotStatus, "   ")) {
-						$sql = "delete from " . $databaseName . ".lotstatuses where `builder`='" . $builder . "' && `subdivision`='" .
-					 	   $subdivision . "' && `lot`='" . $lot . "'";
-					    if(!mysqli_query($this->con, $sql)) {
-							$outputMessage = 'Unable to delete lot status.';
-						} else {
-							$outputMessage = 'Deleted Timesheet' . $builder . " " . $subdivision . " " . $lot . ' with ' .
-										 $selectedTimesheetAction . ' and LotStatus';
-							$lotStatusDeleted = true;
-						}
+
+			 	   	// determine number of rows result set
+                    $row_cnt = mysqli_num_rows($records);
+                    if($row_cnt == 0) {
+			 	   	    $sql = "delete from " . $databaseName . ".lotstatuses where `builder`='" . $builder . "' && `subdivision`='" .
+                           $subdivision . "' && `lot`='" . $lot . "'";
+                        if(!mysqli_query($this->con, $sql)) {
+                            $outputMessage = 'Unable to delete lot status.';
+                        } else {
+                            $outputMessage = 'Deleted Timesheet' . $builder . " " . $subdivision . " " . $lot . ' with ' .
+                                         $selectedTimesheetAction . ' and LotStatus';
+                            $lotStatusDeleted = true;
+                        }
 					}
 				}
-				if(!$lotStatusDeleted) {
+				if($lotStatusDeleted) {
 					$outputMessage = 'Deleted Timesheet successfully.';
+					clearSelectedTimesheet();
+				} else {
+				    $outputMessage = 'Unable to delete Timesheet.';
 				}
-				clearSelectedTimesheet();
 			} else {
 				$outputMessage='Unable to delete Timesheet: ' . mysqli_error($this->con);
 			}
-		} else {
-			$outputMessage = 'Timesheet does not exist.';
 		}
 	}
 	
