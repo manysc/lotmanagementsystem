@@ -31,6 +31,7 @@ body,td,th {
 	border-color:transparent;
 	background-color: #0EA;
 }
+
 #centerHeader {
 	width :50%;
 	padding : 0;
@@ -39,6 +40,7 @@ body,td,th {
 	border-color:transparent;
 	background-color: #0EA;
 }
+
 #rightHeader {
 	width :20%;
 	padding : 0;
@@ -84,10 +86,15 @@ body,td,th {
       	}
       ?>
 	<li><a <?php echo "href=" . $sitePath . "/crew/crews.php"; ?> >Crews</a></li>
+	<li><a <?php echo "href=" . $sitePath . "/vendors/vendors.php"; ?> >Vendors</a></li>
     </ul>
   </li>
   <li><a <?php echo "href=" . $sitePath . "/layout/layouts.php"; ?> >Layouts</a></li>
-  <li><a <?php echo "href=" . $sitePath . "/timesheet/masonryTimeSheet.php"; ?> >Timesheet</a></li>
+  <li><a <?php echo "href=" . $sitePath . "/timesheet/masonryTimeSheet.php"; ?> >Timesheet</a>
+      <ul>
+  	    <li><a <?php echo "href=" . $sitePath . "/materialsheet/materialSheet.php"; ?> >Material Sheet</a></li>
+      </ul>
+   </li>
   
   <li><a class="MenuBarItemSubmenu">Reports</a>
 	  <ul>

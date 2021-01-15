@@ -8,6 +8,7 @@ class layoutDAO {
 		global $databaseId;
 		global $databasePassword;
 		global $databaseName;
+		global $outputMessage;
 		
 		$this->con=mysqli_connect($databaseHostname,$databaseId,$databasePassword,$databaseName);
 		
@@ -79,6 +80,45 @@ class layoutDAO {
         $_POST["repair"] = !strcmp($rows['repair'], 1) ? $rows['repair'] : "";
         $_POST["groutRetainer"] = !strcmp($rows['grout_retainer'], 1) ? $rows['grout_retainer'] : "";
 	}
+
+	function displayExistingMaterialSheets() {
+      global $databaseName;
+      global $builder;
+      global $subdivision;
+      global $lot;
+      global $outputMessage;
+
+      $sql = "select * from " . $databaseName . ".materialsheets where `builder`='" . $builder . "' && `subdivision`='" . $subdivision .
+            "' && `lot`='" . $lot . "' order by `order_date`";
+      $records = mysqli_query($this->con, $sql);
+      $count = 0;
+      while ($rows = mysqli_fetch_array($records)) {
+         $order_date = $rows['order_date'];
+         $poNumber = $rows['po_number'];
+
+         if($count == 0) {
+            echo '<table id="materialSheetsTable" style="border:5px solid black;" width="57%" border="5" cellpadding="1" cellspacing="5" class="db-table">';
+            echo '<tr><th style="border:0px solid black;">Order Date</th><th style="border:0px solid black;">Purchase Order #</th></tr>';
+         }
+
+         echo '<tr>';
+            $urlBuilder = str_replace('&','sAnd',$builder);
+            $urlBuilder = str_replace(' ',':',$urlBuilder);
+            $urlSubdivision = str_replace('&','sAnd',$subdivision);
+            $urlSubdivision = str_replace(' ',':',$urlSubdivision);
+            $searchUrl = '../materialsheet/materialSheet.php?lot=' . $order_date . ',' . $urlBuilder . ',' . $urlSubdivision . ',' . $lot . ',' . $poNumber . ',' . 'search';
+            echo "<td align='center' id='existingMaterialSheetDate' style='border:0px solid black;' width='17%' align='left'><a href=$searchUrl>$order_date</a></td>";
+            echo "<td align='center' id='existingTimesheetAction' style='border:0px solid black;' width='17%' align='left'>$poNumber</td>";
+         echo "</tr>";
+         $count++;
+      }
+
+      if($count == 0) {
+         echo 'No Material Sheets found';
+      } else {
+         echo "</table>";
+      }
+   }
 	
 	function displayExistingTimesheets() {
 		global $databaseName;
@@ -284,16 +324,16 @@ class layoutDAO {
 		/* determine number of rows result set */
         $row_cnt = mysqli_num_rows($records);
         if($row_cnt == 0) {
-            $outputMessage= "Layout is not found!";
+            $outputMessage= "Layout was not found!";
             return;
         }
 
 		$rows = mysqli_fetch_array($records);
 
 		$sql = "delete from " . $databaseName . ".layouts where `builder`='" . $builder . "' && `subdivision`='" .
-        			       $subdivision . "' && `lot`='" . $lot . "'";
-        			mysqli_query($this->con, $sql);
-        			$outputMessage = 'Deleted ' . $builder . " " . $subdivision . " " . $lot;
+             $subdivision . "' && `lot`='" . $lot . "'";
+      mysqli_query($this->con, $sql);
+      $outputMessage = 'Deleted ' . $builder . " " . $subdivision . " " . $lot;
 	}
 
 	// Save Layout Plan image filename

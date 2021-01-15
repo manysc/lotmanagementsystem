@@ -114,6 +114,15 @@ else if(isset($_POST['saveSelectedTimesheet'])) {
     updatePlanImage();
 }
 
+function displayExistingMaterialSheets() {
+	if(validateBuilder() && validateSubdivision() && validateLot()) {
+		$layoutDAO = new layoutDAO();
+		$layoutDAO->connect();
+		$layoutDAO->displayExistingMaterialSheets();
+		$layoutDAO->disconnect();
+	}
+}
+
 function displayExistingTimesheets() {
 	if(validateBuilder() && validateSubdivision() && validateLot()) {
 		$layoutDAO = new layoutDAO();

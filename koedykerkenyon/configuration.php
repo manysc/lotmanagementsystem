@@ -9,6 +9,6 @@ $databasePassword="";
 $databaseName="manysc_koedykerkenyon";
 
 // File Storage Configuration
-$layout_plan_images_dir = "../layout/plans/";
+$layout_plan_images_dir="../layout/plans/";
 
 ?>

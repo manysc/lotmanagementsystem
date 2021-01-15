@@ -32,12 +32,20 @@
 	width: 180px;
 	font-size: 23px;
 }
+.formMediumSmallerInput {
+	width: 140px;
+	font-size: 23px;
+}
 .formSmallInput {
 	width: 100px;
 	font-size: 23px;
 }
 .formSmallerInput {
 	width: 80px;
+	font-size: 23px;
+}
+.formSmallestInput {
+	width: 50px;
 	font-size: 23px;
 }
 .formLabel {

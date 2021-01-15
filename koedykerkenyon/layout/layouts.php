@@ -154,6 +154,16 @@ if(isset($_GET['lot'])) {
       <br/>
   </fieldset>
   <br/>
+
+  <fieldset>
+    	<legend class="sectionLegend">Material Sheets</legend>
+      <?php
+         if(!isset($_POST['clearLayout'])) {
+            displayExistingMaterialSheets();
+         }
+      ?>
+  	</fieldset><br/>
+
   <fieldset>
   	<legend class="sectionLegend">Timesheets</legend>
 	<?php
