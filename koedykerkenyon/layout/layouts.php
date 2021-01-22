@@ -172,7 +172,7 @@ if(isset($_GET['lot'])) {
   		}
 	?>
 	<br/>
-	<table id="selectTimesheetTable" style="border:0px solid black;" width="70%" border="5" cellpadding="1" cellspacing="5" class="db-table">
+	<table id="selectTimesheetTable" style="border:0px solid black;" width="45%" border="5" cellpadding="1" cellspacing="5" class="db-table">
 	<tr><th style="border:0px solid black;">Date</th><th style="border:0px solid black;">Action</th><th style="border:0px solid black;">Crew</th><th style="border:0px solid black;"></th><th style="border:0px solid black;"></th></tr>
 	<tr>			
 	  <td align='center' id='selectedTimesheetDateCol' style='border:0px solid black;' width='10%' align='left'>
@@ -198,7 +198,7 @@ if(isset($_GET['lot'])) {
 			<option value="purchaseOrder" <?= (isset($_POST['selectedTimesheetAction']) ? !strcmp($_POST["selectedTimesheetAction"], "PO") ? 'selected' : '' : '') ?> >PO</option>
 	     </select>
   	  </td>
-  	  <td align='center' id='selectedTimesheetCrewCol' style='border:0px solid black;' width='10%' align='left'>
+  	  <td align='center' id='selectedTimesheetCrewCol' style='border:0px solid black;' width='15%' align='left'>
   	     <?php displayCrewDropMenu(); ?>
   	  </td>
 	  <td align='center' id='saveSelectedTimesheet' style='border:0px solid black;' width='10%' align='left'>

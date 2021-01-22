@@ -94,116 +94,116 @@ function displayMaterialsTable() {
    global $block4Amount;
    global $palletsAmount;
 
-   echo '<table id="materialsTable" style="border:5px solid black;" width="90%" border="5" cellpadding="1" cellspacing="0" class="db-table">';
+   echo '<table class="materialsTable" style="border:5px solid black;" width="90%" border="5" cellpadding="1" cellspacing="0" class="db-table">';
    echo '<tr><th style="border:0px solid black;">Qty</th><th style="border:0px solid black;">Unit/Measure</th><th style="border:0px solid black;">Description</th><th style="border:0px solid black;">Unit Price</th><th style="border:0px solid black;">Amount</th></tr>';
 
    if ($fullBlockQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $fullBlockQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>4X8X16 T & G - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorBlockPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $fullBlockAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $fullBlockQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>4X8X16 T & G - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorBlockPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $fullBlockAmount . "</td>";
       echo "</tr>";
    }
 
    if ($aBlockQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $aBlockQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>A BLOCK - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorABlockPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $aBlockAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $aBlockQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>A BLOCK - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorABlockPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $aBlockAmount . "</td>";
       echo "</tr>";
    }
 
    if ($hBlockQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $hBlockQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>H BLOCK - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorHBlockPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $hBlockAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $hBlockQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>H BLOCK - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorHBlockPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $hBlockAmount . "</td>";
       echo "</tr>";
    }
 
    if ($lBlockQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $lBlockQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>L BLOCK - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorLBlockPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $lBlockAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $lBlockQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>L BLOCK - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorLBlockPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $lBlockAmount . "</td>";
       echo "</tr>";
    }
 
    if ($bwTBlockNeeded > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $bwTBlockNeeded . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>T BLOCK - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorTBlockPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $tBlockAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $bwTBlockNeeded . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>T BLOCK - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorTBlockPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $tBlockAmount . "</td>";
       echo "</tr>";
    }
 
    if ($capsQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $capsQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>8X2X16 CAPS - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorCapsPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $capsAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $capsQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>8X2X16 CAPS - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorCapsPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $capsAmount . "</td>";
       echo "</tr>";
    }
 
    if ($latterWireQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $latterWireQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>4\" LATTER WIRE</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorLatterWirePrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $latterWireAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $latterWireQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>4\" LATTER WIRE</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorLatterWirePrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $latterWireAmount . "</td>";
       echo "</tr>";
    }
 
    if ($decosQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $decosQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>8X4X16 DECOS - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorDecoBlockPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $decosAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $decosQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>8X4X16 DECOS - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorDecoBlockPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $decosAmount . "</td>";
       echo "</tr>";
    }
 
    if ($block4Quantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $block4Quantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'>Each</td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>4X4X16 BLOCK - " . $blockColor . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorBlock4Price . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $block4Amount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $block4Quantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'>Each</td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>4X4X16 BLOCK - " . $blockColor . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorBlock4Price . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $block4Amount . "</td>";
       echo "</tr>";
    }
 
    if ($palletsQuantity > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>" . $palletsQuantity . "</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'></td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>PALLETS</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $vendorPalletsPrice . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $palletsAmount . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>" . $palletsQuantity . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'></td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>PALLETS</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $vendorPalletsPrice . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $palletsAmount . "</td>";
       echo "</tr>";
    }
 
    if ($deliveryCharge > 0) {
       echo '<tr>';
-      echo "<td align='center' style='border:1px solid black;font-size:23px;height:40px;' width='10%'>1</td>";
-      echo "<td align='center' style='font-size:23px' width='20%'></td>";
-      echo "<td align='left' style='font-size:23px' width='40%'>DELIVERY CHARGE</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $deliveryCharge . "</td>";
-      echo "<td align='center' style='font-size:23px' width='15%'>" . $deliveryCharge . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;height:40px;' width='10%'>1</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='20%'></td>";
+      echo "<td align='left' style='border:none;border-bottom:1px solid black;font-size:23px;' width='40%'>DELIVERY CHARGE</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $deliveryCharge . "</td>";
+      echo "<td align='center' style='border:none;border-bottom:1px solid black;font-size:23px;' width='15%'>" . $deliveryCharge . "</td>";
       echo "</tr>";
    }
 

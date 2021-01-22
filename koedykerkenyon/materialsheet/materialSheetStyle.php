@@ -84,6 +84,27 @@
 	border-color: transparent;
 }
 
+.materialsTable {
+   border-collapse:collapse;
+   text-align: center;
+}
+
+.materialsTable th {
+   background-color:#0CA;
+   color:Black;
+   font-size:25px;
+   font-weight:bold;
+   padding:5px;
+   border: none;
+}
+
+.materialsTable td {
+   padding:5px;
+   border: none;
+   font-size:23px;
+   font-weight:normal;
+}
+
 .combobox {
 	font-size: 23px;
 }

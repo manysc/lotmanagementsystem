@@ -97,7 +97,7 @@ class layoutDAO {
          $poNumber = $rows['po_number'];
 
          if($count == 0) {
-            echo '<table id="materialSheetsTable" style="border:5px solid black;" width="57%" border="5" cellpadding="1" cellspacing="5" class="db-table">';
+            echo '<table id="materialSheetsTable" style="border:5px solid black;" width="45%" border="5" cellpadding="1" cellspacing="5" class="db-table">';
             echo '<tr><th style="border:0px solid black;">Order Date</th><th style="border:0px solid black;">Purchase Order #</th></tr>';
          }
 
@@ -107,8 +107,8 @@ class layoutDAO {
             $urlSubdivision = str_replace('&','sAnd',$subdivision);
             $urlSubdivision = str_replace(' ',':',$urlSubdivision);
             $searchUrl = '../materialsheet/materialSheet.php?lot=' . $order_date . ',' . $urlBuilder . ',' . $urlSubdivision . ',' . $lot . ',' . $poNumber . ',' . 'search';
-            echo "<td align='center' id='existingMaterialSheetDate' style='border:0px solid black;' width='17%' align='left'><a href=$searchUrl>$order_date</a></td>";
-            echo "<td align='center' id='existingTimesheetAction' style='border:0px solid black;' width='17%' align='left'>$poNumber</td>";
+            echo "<td align='center' id='existingMaterialSheetDate' style='border:0px solid black;' width='10%' align='left'><a href=$searchUrl>$order_date</a></td>";
+            echo "<td align='center' id='existingTimesheetAction' style='border:0px solid black;' width='35%' align='left'>$poNumber</td>";
          echo "</tr>";
          $count++;
       }
@@ -138,7 +138,7 @@ class layoutDAO {
 			$crewName = $rows['crew_name'];
 			
 			if($count == 0) {
-				echo '<table id="timesheetsTable" style="border:5px solid black;" width="57%" border="5" cellpadding="1" cellspacing="5" class="db-table">';
+				echo '<table id="timesheetsTable" style="border:5px solid black;" width="45%" border="5" cellpadding="1" cellspacing="5" class="db-table">';
 				echo '<tr><th style="border:0px solid black;">Date</th><th style="border:0px solid black;">Action</th><th style="border:0px solid black;">Crew</th></tr>';
 			}
 			
@@ -150,9 +150,9 @@ class layoutDAO {
 				$urlAction = str_replace(' ',':',$action);
 				$urlCrewName = str_replace(' ',':',$crewName);
 				$searchUrl = '../timesheet/masonryTimeSheet.php?lot=' . $formattedDate . ',' . $urlBuilder . ',' . $urlSubdivision . ',' . $lot . ',' . $urlAction . ',' . $urlCrewName . ',' . 'search';
-				echo "<td align='center' id='existingTimesheetDate' style='border:0px solid black;' width='17%' align='left'><a href=$searchUrl>$formattedDate</a></td>";
-				echo "<td align='center' id='existingTimesheetAction' style='border:0px solid black;' width='17%' align='left'>$action</td>";
-				echo "<td id='existingTimesheetCrewName' style='border:0px solid black;' width='20%' align='left'>$crewName</td>";
+				echo "<td align='center' id='existingTimesheetDate' style='border:0px solid black;' width='10%' align='left'><a href=$searchUrl>$formattedDate</a></td>";
+				echo "<td align='center' id='existingTimesheetAction' style='border:0px solid black;' width='10%' align='left'>$action</td>";
+				echo "<td align='center' id='existingTimesheetCrewName' style='border:0px solid black;' width='25%' align='left'>$crewName</td>";
 			echo "</tr>";
 			$count++;
 		}

@@ -45,17 +45,13 @@ if(isset($_POST['action'])) {
 
 <fieldset>
   <label class="formHeaderLabel">Date:
-  	  <?php if($msie) : ?>
-  	     <input placeholder="mm/dd/yyyy" type="text" name="timesheetDate" id="timesheetDate" readonly onClick="GetDate(this);" size="10" style="font-size:23px" value="<?php if(isset($_POST['timesheetDate'])) { echo $_POST['timesheetDate']; } ?>"/>
-  	  <?php else : ?>
-         <input name="timesheetDate" type="date" size="10" align="left"style="font-size:23px" value="<?php if(isset($_POST['timesheetDate'])) { echo $_POST['timesheetDate']; } ?>"/>
-      <?php endif; ?>
+  	  <input name="timesheetDate" type="date" size="10" align="left"style="font-size:23px" value="<?php if(isset($_POST['timesheetDate'])) { echo $_POST['timesheetDate']; } ?>"/>
   </label>
   <label class="formHeaderLabel">Builder:
 	  <input class="formMediumInput" name="builder" type="text" value="<?php if(isset($_POST['builder'])) { echo $_POST['builder']; } ?>"/> 
   </label>
   <label class="formHeaderLabel">Subdivision:
-	  <input class="formHeaderLabel" name="subdivision" type="text" value="<?php if(isset($_POST['subdivision'])) { echo $_POST['subdivision']; } ?>"/> 
+	  <input class="formMediumInput" name="subdivision" type="text" value="<?php if(isset($_POST['subdivision'])) { echo $_POST['subdivision']; } ?>"/>
   </label><br>
   <label class="formHeaderLabel">Lot:
 	  <input class="formSmallInput" name="lot" type="text" value="<?php if(isset($_POST['lot'])) { echo $_POST['lot']; } ?>"/>
